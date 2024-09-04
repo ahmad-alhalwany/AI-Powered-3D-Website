@@ -22,12 +22,18 @@ const Shirt = () => {
   return (
     <group key={stateString}>
       <mesh
+        // eslint-disable-next-line react/no-unknown-property
         castShadow
+        // eslint-disable-next-line react/no-unknown-property
         geometry={nodes.T_Shirt_male.geometry}
+        // eslint-disable-next-line react/no-unknown-property
         material={materials.lambert1}
+        // eslint-disable-next-line react/no-unknown-property
         material-roughness={1}
+        // eslint-disable-next-line react/no-unknown-property
         dispose={null}
       >
+
         {snap.isFullTexture && (
           <Decal 
             position={[0,0,0]}

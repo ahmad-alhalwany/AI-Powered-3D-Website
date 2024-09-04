@@ -1,13 +1,14 @@
-import { useSnapshot } from "valtio"
+import PropTypes from 'prop-types';
+import { useSnapshot } from "valtio";
+import state from '../store';
 
-import state from '../store'
-
-const Tab = ({tab, isFitlerTab, isActiveTab, handlClick}) => {
-  const snap = useSnapshot(state)
+const Tab = ({ tab, isFitlerTab, isActiveTab, handlClick }) => {
+  const snap = useSnapshot(state);
 
   const activeStyle = isFitlerTab && isActiveTab 
-  ? {backgroundColor: snap.color, opacity:0.5}
-  : {backgroundColor: "transparent", opacity:1}
+    ? { backgroundColor: snap.color, opacity: 0.5 }
+    : { backgroundColor: "transparent", opacity: 1 };
+
   return (
     <div 
       key={tab.name}
@@ -18,10 +19,20 @@ const Tab = ({tab, isFitlerTab, isActiveTab, handlClick}) => {
       <img
         src={tab.icon}
         alt={tab.name}
-        className={`${isFitlerTab ? 'w-2/3 h-2/3': 'w-11/12 h-11/12 object-contain'}`}
+        className={`${isFitlerTab ? 'w-2/3 h-2/3' : 'w-11/12 h-11/12 object-contain'}`}
       />
     </div>
-  )
-}
+  );
+};
 
-export default Tab
+Tab.propTypes = {
+  tab: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
+  }).isRequired,
+  isFitlerTab: PropTypes.bool.isRequired,
+  isActiveTab: PropTypes.bool.isRequired,
+  handlClick: PropTypes.func.isRequired,
+};
+
+export default Tab;

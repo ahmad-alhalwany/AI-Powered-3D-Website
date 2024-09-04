@@ -1,14 +1,15 @@
+import PropTypes from 'prop-types';
 import CustomButton from "./CustomButton"
 
-const FilePicker = ({file, setFile, readFile}) => {
+const FilePicker = ({ file, setFile, readFile }) => {
   return (
     <div className="filepicker-container">
-      <div className="flex-1 flex flex-col ">
+      <div className="flex-1 flex flex-col">
         <input
           id="file-upload"
           type="file"
           accept="image/*"
-          onChange={(e)=> setFile(e.target.files[0])}
+          onChange={(e) => setFile(e.target.files[0])}
         />
         <label htmlFor="file-upload" className="filepicker-label">
           Upload File
@@ -34,7 +35,16 @@ const FilePicker = ({file, setFile, readFile}) => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FilePicker
+FilePicker.propTypes = {
+  file: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+  ]).isRequired,
+  setFile: PropTypes.func.isRequired,
+  readFile: PropTypes.func.isRequired,
+};
+
+export default FilePicker;

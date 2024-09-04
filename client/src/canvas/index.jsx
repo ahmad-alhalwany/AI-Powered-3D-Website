@@ -2,7 +2,6 @@ import { Canvas } from '@react-three/fiber'
 import { Environment, Center } from '@react-three/drei';
 
 import Shirt from './Shirt';
-import Backdrop from './Backdrop';
 import CameraRig from './CameraRig';
 import BackDrop from './Backdrop';
 
@@ -15,6 +14,7 @@ const CanvasModule = () => {
       gl={{preserveDrawingBuffer: true}}
       className='w-full max-w-full h-full transition-all ease-in '
     >
+      {/* eslint-disable-next-line react/no-unknown-property */}
       <ambientLight intensity={0.5} />
       <Environment preset="city" />
 
